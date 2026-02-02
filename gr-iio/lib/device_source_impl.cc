@@ -119,6 +119,14 @@ void device_source_impl::set_timeout_ms(unsigned long _timeout)
     this->timeout = _timeout;
 }
 
+void device_source_impl::cmd_handler_samp_rate(pmt::pmt_t val, size_t channel)
+{
+    if (!(val->is_number() && !val->is_complex())) {
+        d_logger->error("device source: freq must be float/int");
+    }
+    set_frequency(channel, pmt::to_double(val));
+}
+
 iio_context* device_source_impl::get_context(const std::string& uri)
 {
     iio_context* ctx;

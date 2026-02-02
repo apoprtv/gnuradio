@@ -64,6 +64,10 @@ protected:
     volatile bool thread_stopped;
     uint16_t override_tagged_output_channels = 0;
 
+    void cmd_handler_samp_rate(pmt::pmt_t val, size_t channel)
+
+    // tutaj nie będzie potrzeba walidacji kanałów ponieważ kanały są tworzone na sztywno
+
 
 public:
     device_source_impl(iio_context* ctx,
